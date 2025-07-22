@@ -1,0 +1,34 @@
+# Python specific
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.egg-info/
+.pytest_cache/
+.coverage
+
+# Instance specific (sensitive data, local configuration)
+instance/
+
+# Database files (for SQLite, if used directly in project root)
+*.db
+*.sqlite
+*.sqlite3
+
+# Editor/IDE specific files
+.vscode/        # VS Code specific files
+.idea/          # PyCharm specific files
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store       # macOS
+Thumbs.db       # Windows
+ehthumbs.db     # Windows
+Desktop.ini     # Windows
+
+# Environment variables (if you use .env for development)
+.env

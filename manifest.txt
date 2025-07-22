@@ -1,0 +1,38 @@
+your_flask_app_name/
+├── venv/                     # Your Python virtual environment (already existing)
+│   ├── bin/
+│   ├── lib/
+│   └── pyvenv.cfg
+├── app/                      # Main application package
+│   ├── __init__.py           # Initializes the Flask app, database, etc.
+│   ├── routes.py             # Defines your application's URLs and view functions
+│   ├── models.py             # Defines your database models (e.g., SQLAlchemy models)
+│   ├── forms.py              # Defines your web forms (e.g., Flask-WTF forms)
+│   ├── static/               # Static files (CSS, JavaScript, images)
+│   │   ├── css/
+│   │   │   └── style.css
+│   │   ├── js/
+│   │   │   └── main.js
+│   │   └── img/
+│   │       └── logo.png
+│   └── templates/            # HTML templates for rendering dynamic content
+│       ├── base.html         # Base template for consistent layout
+│       ├── index.html        # Example homepage template
+│       ├── challenges/       # Sub-folder for challenge-related templates
+│       │   ├── list.html
+│       │   ├── create.html
+│       │   └── detail.html
+│       └── progress/         # Sub-folder for progress-related templates
+│           ├── entry_form.html
+│           └── history.html
+├── instance/                 # Instance-specific configuration (not under version control)
+│   └── config.py             # Database URIs, secret keys, etc.
+├── tests/                    # Your application tests
+│   ├── __init__.py
+│   ├── test_routes.py
+│   └── test_models.py
+├── .gitignore                # Specifies intentionally untracked files to ignore
+├── config.py                 # Application-wide configuration (e.g., development/production settings)
+├── run.py                    # Script to run the Flask application
+├── requirements.txt          # List of Python dependencies
+└── README.md                 # Project description, setup instructions, etc.
