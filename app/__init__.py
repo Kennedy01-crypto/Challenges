@@ -6,7 +6,7 @@ def create_app(config_Class = Config):
     app = Flask(__name__, instance_relative_config=True)
 
     # load configuration
-    app.confug.from_object(config_Class)
+    app.config.from_object(config_Class)
     app.config.from_pyfile('config.py', silent=True)
 
     # ensure the instance folder exists
