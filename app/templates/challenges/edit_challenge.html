@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block content %}
+<h1>Edit Challenge: {{ challenge.title }}</h1>
+<form
+  action="{{ url_for('main.edit_challenge', challenge_id=challenge.id) }}"
+  method="post"
+>
+  <!-- We will replace this with a Flask-WTF form later -->
+  <p>
+    <label for="title">Title</label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      value="{{ challenge.title }}"
+      required
+    />
+  </p>
+  <p>
+    <label for="description">Description</label>
+    <textarea id="description" name="description" rows="5" required>
+{{ challenge.description }}</textarea
+    >
+  </p>
+  <p>
+    <label for="status">Status</label>
+    <input
+      type="text"
+      id="status"
+      name="status"
+      value="{{ challenge.status }}"
+      required
+    />
+  </p>
+  <p>
+    <input type="submit" value="Save Changes" class="btn btn-primary" />
+  </p>
+</form>
+{% endblock %}
