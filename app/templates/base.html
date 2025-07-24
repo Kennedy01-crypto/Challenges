@@ -1,21 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% if title %}
     <title>{{ title }} - Challenges App</title>
     {% else %}
     <title>Welcome to Challenges App</title>
     {% endif %}
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 2em;
+        background-color: #f4f4f9;
+        color: #333;
+      }
+      nav {
+        background-color: #fff;
+        padding: 1em;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2em;
+      }
+      nav a {
+        text-decoration: none;
+        color: #007bff;
+        margin-right: 1em;
+        font-weight: bold;
+      }
+      nav a:hover {
+        text-decoration: underline;
+      }
+      .container {
+        background-color: #fff;
+        padding: 2em;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .flash {
+        padding: 1em;
+        margin-bottom: 1em;
+        border-radius: 4px;
+      }
+      .flash.success {
+        background-color: #d4edda;
+        color: #155724;
+      }
+      .flash.error {
+        background-color: #f8d7da;
+        color: #721c24;
+      }
+      .challenge-list {
+        list-style: none;
+        padding: 0;
+      }
+      .challenge-list li {
+        background: #e9ecef;
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .challenge-list a {
+        text-decoration: none;
+        color: #0056b3;
+        font-size: 1.1em;
+      }
+      .btn {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .btn-primary {
+        background-color: #007bff;
+      }
+      .btn-secondary {
+        background-color: #6c757d;
+      }
+      .btn-danger {
+        background-color: #dc3545;
+      }
+      form p {
+        margin-bottom: 1em;
+      }
+      form label {
+        display: block;
+        margin-bottom: 0.5em;
+        font-weight: bold;
+      }
+      form input[type="text"],
+      form textarea,
+      form input[type="date"] {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+    </style>
   </head>
   <body>
-    <div>Challenges App: <a href="{{ url_for('main.index') }}">Home</a></div>
-    <hr />
-    {% with messages = get_flashed_messages() %} {% if messages %}
-    <ul>
-      {% for message in messages %}
-      <li>{{ message }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %} {% endwith %} {% block content %}{% endblock %}
+    <nav>
+      <a href="{{ url_for('main.index') }}">Home</a>
+      <a href="{{ url_for('main.create_challenge') }}">New Challenge</a>
+      <!-- Placeholder for auth links -->
+      <a href="#" style="float: right">Login</a>
+    </nav>
+
+    <div class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %} {% endif %} {% endwith %} {% block content %}{% endblock %}
+    </div>
   </body>
 </html>
