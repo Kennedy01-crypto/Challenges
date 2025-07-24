@@ -1,4 +1,19 @@
 {% extends "base.html" %} {% block content %}
-<h1>Hello, welcome to the Challenges App!</h1>
-<p>This is the homepage for our new application.</p>
-{% endblock %}
+<h1>Current Challenges</h1>
+{% if challenges %}
+<ul class="challenge-list">
+  {% for challenge in challenges %}
+  <li>
+    <a href="{{ url_for('main.challenge', challenge_id=challenge.id) }}"
+      >{{ challenge.title }}</a
+    >
+    <span>Status: {{ challenge.status }}</span>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>
+  No challenges yet!
+  <a href="{{ url_for('main.create_challenge') }}">Create one?</a>
+</p>
+{% endif %} {% endblock %}
