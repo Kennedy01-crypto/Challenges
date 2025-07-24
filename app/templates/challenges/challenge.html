@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block content %}
+<h1>{{ challenge.title }}</h1>
+<p><strong>Status:</strong> {{ challenge.status }}</p>
+<p><strong>Due Date:</strong> {{ challenge.due_date.strftime('%Y-%m-%d') }}</p>
+<hr />
+
+<h3>Description</h3>
+<p>{{ challenge.description }}</p>
+
+<hr />
+<a
+  href="{{ url_for('main.edit_challenge', challenge_id=challenge.id) }}"
+  class="btn btn-secondary"
+  >Edit</a
+>
+<form
+  action="{{ url_for('main.delete_challenge', challenge_id=challenge.id) }}"
+  method="post"
+  style="display: inline"
+>
+  <!-- We will add a CSRF token here later with Flask-WTF -->
+  <input
+    type="submit"
+    value="Delete"
+    class="btn btn-danger"
+    onclick="return confirm('Are you sure you want to delete this challenge?');"
+  />
+</form>
+<a
+  href="{{ url_for('main.index') }}"
+  class="btn btn-primary"
+  style="float: right"
+  >Back to List</a
+>
+{% endblock %}
